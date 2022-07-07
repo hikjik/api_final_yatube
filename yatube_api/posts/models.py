@@ -25,7 +25,7 @@ class Post(models.Model):
         upload_to='posts/', null=True, blank=True
     )
     group = models.ForeignKey(
-        Group, on_delete=models.CASCADE,
+        Group, on_delete=models.SET_NULL,
         related_name="posts", blank=True, null=True
     )
 
@@ -44,3 +44,12 @@ class Comment(models.Model):
     created = models.DateTimeField(
         'Дата добавления', auto_now_add=True, db_index=True
     )
+
+
+class Follow(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    following = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='following')
+
+    def __str__(self):
+        return f"Подписчик: {self.user}, Автор: {self.following}"
