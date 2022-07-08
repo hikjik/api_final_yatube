@@ -56,7 +56,7 @@ class FollowViewSet(GenericViewSet, ListModelMixin, CreateModelMixin):
     serializer_class = FollowSerializer
     permission_classes = [IsAuthenticated]
     filter_backends = [SearchFilter]
-    search_fields = ['following__username']
+    search_fields = ['user__username', 'following__username']
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
