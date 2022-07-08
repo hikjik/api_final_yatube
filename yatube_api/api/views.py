@@ -6,6 +6,7 @@ from rest_framework.viewsets import (
 )
 from rest_framework.mixins import ListModelMixin, CreateModelMixin
 from rest_framework.permissions import (
+    AllowAny,
     IsAuthenticatedOrReadOnly,
     IsAuthenticated,
 )
@@ -25,7 +26,7 @@ from .permissions import IsAuthorOrReadOnly
 class GroupViewSet(ReadOnlyModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-    permission_classes = []
+    permission_classes = [AllowAny]
 
 
 class PostViewSet(ModelViewSet):
