@@ -13,7 +13,7 @@ from rest_framework.permissions import (
 from rest_framework.filters import SearchFilter
 from rest_framework.pagination import LimitOffsetPagination
 
-from posts.models import Follow, Group, Post
+from posts.models import Group, Post
 from .serializers import (
     GroupSerializer,
     PostSerializer,
